@@ -5,8 +5,13 @@ function Items() {
     function fetchItems(){
         fetch('http://localhost:4000/items')
         .then(response => response.json())
-        .then(data => {
-            console.log(data)
+        .then(items => {
+            console.log(items)
+            items.map(item => (
+                <div>
+                    <h2>Name: item.name</h2>
+                </div>
+            ))
         })
     }
     return (
