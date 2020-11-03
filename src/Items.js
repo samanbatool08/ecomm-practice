@@ -1,51 +1,30 @@
-import React from 'react'
+import React from 'react';
+import Item from './Item';
 
-class Items extends React.Component {
-
-    state = {
-        items: {}
-    }
+function Items() {
 
     
-    // function displayItem(item) {
-    //     return (
-    //         <div>
-    //             <h2>Name: {item.name}</h2>
-    //             <h2>Image: {item.image}</h2>
-    //             <h2>Description: {item.description}</h2>
-    //             <h2>Price: {item.price}</h2>
-    //         </div>
-    //     )
-    // }
-
-    
-     fetchItems() {
+     const fetchItems = () => {
         fetch('http://localhost:4000/items')
         .then(response => response.json())
         .then(data => {
-            // console.log(data)
-            this.setState({items: data })
-            //  items.map(item => (
-            //    displayItem(item)
-            // ))
+            data.map((item) => {
+                return <Item item={item}/>
+
+            })
         })
     }
     
-    render() {
-       
-        console.log(this.state)
-
-
     return (
         <div className='items'>
             <div className='items__list' style={{color: "red"}}>
                 HELLO
-                {this.fetchItems}
+                {fetchItems()}
             </div>
             
         </div>
     )
 }
-}
+
 
 export default Items;
