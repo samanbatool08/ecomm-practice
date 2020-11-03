@@ -23,8 +23,12 @@ class Items extends React.Component {
     return (
         <div className='items'>
             <div className='items__list' style={{color: "red"}}>
-                HELLO
-                <Item items={this.state.items}/>
+            {this.state.items.map((item) => {
+                return <div>
+                    <h1>{item.name}</h1>
+                </div>
+            })}
+                {/* <Item items={this.state.items}/> */}
             </div>
         </div>
     )
