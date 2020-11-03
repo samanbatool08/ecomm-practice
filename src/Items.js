@@ -1,25 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Item from './Item';
 
-class Items extends React.Component {
+function Items() {
 
-    state = {
-        items: []
-    }
 
-    componentDidMount(){
-        fetch('http://localhost:4000/items')
-        .then(response => response.json())
-        .then(data => {
-            // console.log(data)
-                this.setState({items: data})
-            })
-    
+    const [items, setItems] = useState([])
+
+    let fetchData = () => {
+    fetch('http://localhost:4000/items')
+    .then(response => response.json())
+    .then(data => {
+        // console.log(data)
+            setItems({items: data})
+        })
     }
  
-
-    render() {
-
     return (
         <div className='items'>
             <div className='items__list' style={{color: "red"}}>
@@ -33,7 +28,8 @@ class Items extends React.Component {
         </div>
     )
 }
-}
+        
+
 
 
 export default Items;
