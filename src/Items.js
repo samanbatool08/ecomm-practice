@@ -1,29 +1,34 @@
 import React from 'react';
 import Item from './Item';
 
-function Items() {
+class Items extends React.Component {
 
-    
-     const fetchItems = () => {
+    state = {
+        items: []
+    }
+
+    componentDidMount(){
         fetch('http://localhost:4000/items')
         .then(response => response.json())
         .then(data => {
-            data.map((item) => {
-                return <Item item={item}/>
-
+            // console.log(data)
+                this.setState({items: data})
             })
-        })
-    }
     
+    }
+ 
+
+    render() {
+
     return (
         <div className='items'>
             <div className='items__list' style={{color: "red"}}>
                 HELLO
-                {fetchItems()}
+                <Item items={this.state.items}/>
             </div>
-            
         </div>
     )
+}
 }
 
 
