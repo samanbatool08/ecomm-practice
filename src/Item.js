@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Item(props) {
+    console.log(props)
     return (
         <div style={{color: 'white'}}>
             {props.items.map((item) => {

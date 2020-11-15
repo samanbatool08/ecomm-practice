@@ -10,7 +10,6 @@ function Items() {
     fetch('http://localhost:4000/items')
     .then(response => response.json())
     .then(data => {
-        // console.log(data)
             setItems({items: data})
         })
     }
@@ -18,12 +17,12 @@ function Items() {
     return (
         <div className='items'>
             <div className='items__list' style={{color: "red"}}>
-            {this.state.items.map((item) => {
+            {/* {this.state.items.map((item) => {
                 return <div>
                     <h1>{item.name}</h1>
                 </div>
-            })}
-                {/* <Item items={this.state.items}/> */}
+            })} */}
+                <Item items={setItems}/>
             </div>
         </div>
     )
